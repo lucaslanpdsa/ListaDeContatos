@@ -16,26 +16,11 @@ export const Card = styled.div`
   }
 `
 
-export const Titulo = styled.h3`
-  font-size: 18px;
-  font-weight: bold;
-  margin-left: 8px;
-`
-
-export const Dados = styled.p`
-  padding: 4px 8px;
-  font-weight: 600;
-  font-size: 10px;
-  background-color: #fcfcfc;
-  border-radius: 8px;
-  margin-right: 16px;
-  display: inline-block;
-`
-
 export const CampoEditavel = styled.textarea`
   color: #8b8b8b;
   font-size: 14px;
   line-height: 24px;
+  font-weigth: 700;
   font-family: 'Roboto Mono', monospace;
   display: block;
   width: 100%;

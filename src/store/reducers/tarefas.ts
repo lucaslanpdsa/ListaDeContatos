@@ -9,20 +9,20 @@ const initialState: TarefasState = {
   itens: [
     {
       id: 1,
-      NomeCompleto: 'Estudar JavaScript revendo o exercício do módulo 7',
-      email: 'email@getMaxListeners.com',
+      NomeCompleto: 'gian souza',
+      email: 'email@gmail.com',
       telefone: 99640369
     },
     {
       id: 2,
-      NomeCompleto: 'Estudar react',
-      email: 'email@getMaxListeners.com',
+      NomeCompleto: 'Lucas Alves',
+      email: 'email@gmail.com',
       telefone: 91651654
     },
     {
       id: 3,
-      NomeCompleto: 'Estudar kotlin',
-      email: 'email@getMaxListeners.com',
+      NomeCompleto: 'Pedro',
+      email: 'email@gmail.com',
       telefone: 52151513
     }
   ]
