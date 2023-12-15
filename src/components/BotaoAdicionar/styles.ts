@@ -8,8 +8,8 @@ export const Circulo = styled(Link)`
   background-color: ${variaveis.verde};
   color: #fff;
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  top: 40px;
+  left: 40px;
   border-radius: 50%;
   display: flex;
   justify-content: center;

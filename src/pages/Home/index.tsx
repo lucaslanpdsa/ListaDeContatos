@@ -6,7 +6,6 @@ const Home = () => (
   <>
     <BarraLateral mostrarFiltros />
     <ListaDeTarefas />
-    <BotaoAdicionar />
   </>
 )
 
