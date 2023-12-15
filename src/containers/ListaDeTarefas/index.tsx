@@ -11,29 +11,6 @@ const ListaDeTarefas = () => {
     (state: RootReducer) => state.filtro
   )
 
-  const filtraTarefas = () => {
-    let tarefasFiltradas = itens
-    if (termo !== undefined) {
-      tarefasFiltradas = tarefasFiltradas.filter(
-        (item) => item.titulo.toLowerCase().search(termo.toLowerCase()) >= 0
-      )
-
-      if (criterio === 'prioridade') {
-        tarefasFiltradas = tarefasFiltradas.filter(
-          (item) => item.prioridade === valor
-        )
-      } else if (criterio === 'status') {
-        tarefasFiltradas = tarefasFiltradas.filter(
-          (item) => item.status === valor
-        )
-      }
-
-      return tarefasFiltradas
-    } else {
-      return itens
-    }
-  }
-
   const exibeResultadoFiltragem = (quantidade: number) => {
     let mensagem = ''
     const complementacao =
@@ -48,21 +25,20 @@ const ListaDeTarefas = () => {
     return mensagem
   }
 
-  const tarefas = filtraTarefas()
-  const mensagem = exibeResultadoFiltragem(tarefas.length)
+  const contatos = itens
+  const mensagem = exibeResultadoFiltragem(contatos.length)
 
   return (
     <MainContainer>
       <Titulo as="p">{mensagem}</Titulo>
       <ul>
-        {tarefas.map((t) => (
-          <li key={t.titulo}>
+        {contatos.map((t) => (
+          <li key={t.NomeCompleto}>
             <Tarefa
               id={t.id}
-              descricao={t.descricao}
-              titulo={t.titulo}
-              status={t.status}
-              prioridade={t.prioridade}
+              email={t.email}
+              NomeCompleto={t.NomeCompleto}
+              telefone={t.telefone}
             />
           </li>
         ))}

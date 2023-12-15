@@ -1,72 +1,68 @@
-import { useState, useEffect, ChangeEvent } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import * as S from './styles'
 
-import { remover, editar, alteraStatus } from '../../store/reducers/tarefas'
+import { remover, editar } from '../../store/reducers/tarefas'
 import TarefaClass from '../../models/Tarefa'
 import { Botao, BotaoSalvar } from '../../styles'
-
-import * as enums from '../../utils/enums/Tarefa'
 
 type Props = TarefaClass
 
 const Tarefa = ({
-  descricao: descricaoOriginal,
-  prioridade,
-  status,
-  titulo,
+  email: emailOriginal,
+  telefone: telefoneOriginal,
+  NomeCompleto: NomeCompletoOriginal,
   id
 }: Props) => {
   const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
-  const [descricao, setDescricao] = useState('')
+  const [email, setEmail] = useState('')
+  const [telefone, setTelefone] = useState(0)
+  const [NomeCompleto, setNomeCompleto] = useState('')
 
   useEffect(() => {
-    if (descricaoOriginal.length > 0) {
-      setDescricao(descricaoOriginal)
+    if (emailOriginal.length > 0) {
+      setEmail(emailOriginal)
     }
-  }, [descricaoOriginal])
+  }, [emailOriginal])
+
+  useEffect(() => {
+    if (telefoneOriginal > 0) {
+      setTelefone(telefoneOriginal)
+    }
+  }, [telefoneOriginal])
+
+  useEffect(() => {
+    if (NomeCompletoOriginal.length > 0) {
+      setNomeCompleto(NomeCompletoOriginal)
+    }
+  }, [NomeCompletoOriginal])
 
   function cancelarEdicao() {
     setEstaEditando(false)
-    setDescricao(descricaoOriginal)
-  }
-
-  function alteraStatusTarefa(evento: ChangeEvent<HTMLInputElement>) {
-    dispatch(
-      alteraStatus({
-        id,
-        finalizado: evento.target.checked
-      })
-    )
+    setEmail(emailOriginal)
+    setTelefone(telefoneOriginal)
+    setNomeCompleto(NomeCompletoOriginal)
   }
 
   return (
     <S.Card>
-      <label htmlFor={titulo}>
-        <input
-          type="checkbox"
-          id={titulo}
-          checked={status === enums.Status.CONCLUIDA}
-          onChange={alteraStatusTarefa}
-        />
-        <S.Titulo>
-          {estaEditando && <em>Editando: </em>}
-          {titulo}
-        </S.Titulo>
-      </label>
-      <S.Tag parametro="prioridade" prioridade={prioridade}>
-        {prioridade}
-      </S.Tag>
-      <S.Tag parametro="status" status={status}>
-        {status}
-      </S.Tag>
-      <S.Descricao
+      <S.CampoEditavel
         disabled={!estaEditando}
-        value={descricao}
-        onChange={(evento) => setDescricao(evento.target.value)}
-      />
+        onChange={(e) => setNomeCompleto(e.target.value)}
+        value={NomeCompleto}
+      ></S.CampoEditavel>
+      <S.CampoEditavel
+        disabled={!estaEditando}
+        onChange={(e) => setTelefone(parseInt(e.target.value))}
+        value={telefone}
+      ></S.CampoEditavel>
+      <S.CampoEditavel
+        disabled={!estaEditando}
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      ></S.CampoEditavel>
       <S.BarraAcoes>
         {estaEditando ? (
           <>
@@ -74,10 +70,9 @@ const Tarefa = ({
               onClick={() => {
                 dispatch(
                   editar({
-                    descricao,
-                    prioridade,
-                    status,
-                    titulo,
+                    email,
+                    telefone,
+                    NomeCompleto,
                     id
                   })
                 )

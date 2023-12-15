@@ -5,7 +5,6 @@ import { RootReducer } from '../../store'
 import { alterarTermo } from '../../store/reducers/filtro'
 
 import * as S from './styles'
-import * as enums from '../../utils/enums/Tarefa'
 import { Botao, Campo } from '../../styles'
 
 type Props = {
