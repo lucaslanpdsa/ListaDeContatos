@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { BotaoSalvar, MainContainer, Titulo } from '../../styles'
 import { Campo } from '../../styles'
-import { Form } from './styles'
+import { CampoEditavelInput, Form } from './styles'
 
 import { cadastrar } from '../../store/reducers/tarefas'
 
@@ -37,19 +37,19 @@ const Formulario = () => {
           value={NomeCompleto}
           onChange={(evento) => setNomeCompleto(evento.target.value)}
           type="text"
-          placeholder="Título"
+          placeholder="NomeCompleto"
         />
-        <Campo
-          value={telefone}
-          onChange={({ target }) => setTelefone(parseFloat(target.value))}
-          as="textarea"
-          placeholder="Descrição da tarefa"
+        <CampoEditavelInput
+          onChange={(e) => setTelefone(parseInt(e.target.value))}
+          as="input"
+          placeholder="Telefone"
+          type="number"
         />
         <Campo
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           as="textarea"
-          placeholder="Descrição da tarefa"
+          placeholder="E-mail"
         />
         <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
       </Form>

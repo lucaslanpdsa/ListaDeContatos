@@ -38,6 +38,7 @@ export const Campo = styled.input`
   color: #666666;
   border-color: #666666;
   width: 100%;
+  margin: 10px 0;
 `
 
 export const Botao = styled.button`

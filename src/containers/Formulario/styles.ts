@@ -29,3 +29,13 @@ export const Opcao = styled.div`
   display: inline;
   text-transform: capitalize;
 `
+
+export const CampoEditavelInput = styled.input`
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #666666;
+  border-color: #666666;
+  width: 100%;
+`
